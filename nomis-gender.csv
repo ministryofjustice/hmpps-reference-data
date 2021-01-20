@@ -1,3 +1,4 @@
+CODE,DESCRIPTION,PARENT_CODE,ACTIVE_FLAG,EXPIRED_DATE
 F,Female,,Y,
 M,Male,,Y,
 NK,Not Known / Not Recorded,,Y,
