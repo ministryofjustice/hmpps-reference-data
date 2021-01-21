@@ -1,0 +1,2 @@
+#!/bin/sh -e
+npm install --global "csvtojson@^2.0.10"
