@@ -7,5 +7,9 @@
 Store reference data as flat files with the following characteristics:
 
 - each entry has a unique ID
+- the unique ID is in the _first_ column
 - entries are not deleted (instead, add a `start_date`/`end_date` column pair)
-- data structure changes are backwards-compatible in the same file
+- data structure changes are backwards-compatible in the same file:
+    - cannot remove existing columns
+    - cannot rename existing columns
+    - can add new columns
