@@ -1,7 +1,6 @@
 package uk.gov.justice.hmpps.referencedata
 
 import java.io.FileReader
-import java.io.Reader
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -23,6 +22,15 @@ class CheckCompatibilityTest {
     fun changingAContentFieldIsAllowed() {
         val compatibility = checkCompatibility("/change_content_v1.csv", "/change_content_v2.csv")
         assertTrue(compatibility.errors.isEmpty())
+    }
+
+    @Test
+    fun removingAFileIsDisallowed() {
+        val compatibility = CheckCompatibility(fixture("/no_longer_exists_v1.csv"), null).check()
+        assertEquals(
+            listOf("no longer exists"),
+            compatibility.errors
+        )
     }
 
     @Test
@@ -55,5 +63,5 @@ class CheckCompatibilityTest {
     private fun checkCompatibility(before: String, after: String): Compatibility =
         CheckCompatibility(fixture(before), fixture(after)).check()
 
-    private fun fixture(filename: String): Reader = FileReader(javaClass.getResource(filename).file)
+    private fun fixture(filename: String): String = FileReader(javaClass.getResource(filename).file).readText()
 }
