@@ -26,8 +26,10 @@ BUILD SUCCESSFUL in 2s
 
 To run the tool:
 ```
-$ java -jar app/build/libs/app.jar
-🔍 Checking if register files are backwards compatible with 'main'...
+$ ./gradlew run
+
+> Task :app:run
+🔍 Checking if register files are backwards compatible with 'origin/main'...
 OFFENCES.csv: ✅ pass
 nomis-ethnicity.CSV: ✅ pass
 nomis-gender.csv: ✅ pass
@@ -36,4 +38,7 @@ nomis-suffix.csv: ✅ pass
 nomis-titles.csv: ✅ pass
 pcc-regions-for-probation-v0.csv: ✅ pass
 probation-regions-v0.csv: ✅ pass
+
+BUILD SUCCESSFUL in 1s
+2 actionable tasks: 1 executed, 1 up-to-date
 ```
