@@ -36,7 +36,7 @@ class VersionedRegistersTest {
         assertNotNull(currentContent)
 
         val content = currentContent.trim().split("\n")
-        assertEquals("id,name", content.first())
+        assertEquals("id,tom_23032021_id,name", content.first())
     }
 
     @Test
