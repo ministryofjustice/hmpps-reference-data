@@ -30,14 +30,16 @@ $ ./gradlew run
 
 > Task :app:run
 🔍 Checking if register files are backwards compatible with 'origin/main'...
-OFFENCES.csv: ✅ pass
-nomis-ethnicity.CSV: ✅ pass
-nomis-gender.csv: ✅ pass
-nomis-locations.csv: ✅ pass
-nomis-suffix.csv: ✅ pass
-nomis-titles.csv: ✅ pass
-pcc-regions-for-probation-v0.csv: ✅ pass
-probation-regions-v0.csv: ✅ pass
+registers/nomis-ethnicity.csv: ✅ pass
+registers/nomis-gender.csv: ✅ pass
+registers/nomis-locations.csv: ✅ pass
+registers/nomis-suffix.csv: ✅ pass
+registers/nomis-titles.csv: ✅ pass
+registers/offences.csv: ✅ pass
+registers/pcc-regions-for-probation-v0.csv: ✅ pass
+registers/probation-delivery-units-v0.csv: ✅ pass
+registers/probation-offices-v0.csv: ✅ pass
+registers/probation-regions-v0.csv: ✅ pass
 
 BUILD SUCCESSFUL in 1s
 2 actionable tasks: 1 executed, 1 up-to-date
