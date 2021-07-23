@@ -6,22 +6,46 @@ jobs:
   publish_image:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v2
-      - name: Docker meta
+      - name: Generate docker image tags and labels
         id: meta
         uses: docker/metadata-action@v3
         with:
           images: ghcr.io/${{ github.repository }}
-      - name: Login to GitHub Container Registry
+      - name: Login to container registry
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and Push Docker Image
+      - name: Build and push docker image
         uses: docker/build-push-action@v2
         with:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+  deploy:
+    if: ${{ github.ref == 'refs/head/main' }}
+    needs: [publish_image]
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Authenticate to the cluster
+        env:
+          KUBE_CLUSTER: ${{ secrets.KUBE_CLUSTER }}
+        run: |
+          echo "${{ secrets.KUBE_CERT }}" > ca.crt
+          kubectl config set-cluster ${KUBE_CLUSTER} --certificate-authority=./ca.crt --server=https://api.${KUBE_CLUSTER}
+          kubectl config set-credentials deploy-user --token=${{ secrets.KUBE_TOKEN }}
+          kubectl config set-context ${KUBE_CLUSTER} --cluster=${KUBE_CLUSTER} --user=deploy-user --namespace=${{ secrets.KUBE_NAMESPACE }}
+          kubectl config use-context ${KUBE_CLUSTER}
+      - name: Apply the updated manifest
+        run: |
+          kubectl --namespace=${{ secrets.KUBE_NAMESPACE }} apply \
+            -f kubectl_deploy/deployment.yaml \
+            -f kubectl_deploy/service.yaml \
+            -f kubectl_deploy/ingress.yaml
