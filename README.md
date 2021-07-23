@@ -1,5 +1,7 @@
 # hmpps-reference-data
 
+[![Docker badge](https://img.shields.io/badge/docker-image-2496ED?style=flat&logo=docker)](https://github.com/ministryofjustice/hmpps-reference-data/pkgs/container/hmpps-reference-data)
+
 🧑‍🔬 This is an experimental project: it may change.
 
 ## Intent
