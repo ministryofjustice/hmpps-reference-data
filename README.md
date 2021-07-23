@@ -16,6 +16,21 @@ Store reference data as flat files with the following characteristics:
     - cannot rename existing columns
     - can add new columns
 
+## Where are the files?
+
+The reference data files are CSVs in the [`./registers/`](registers) directory.
+
+These are converted to JSON files during the [build process](.github/workflows/publish.yml) and published. For example:
+```
+docker run --rm -p 8000:8000 ghcr.io/ministryofjustice/hmpps-reference-data:main
+```
+Then visit
+
+- http://localhost:8000/probation-regions-v0.json
+- http://localhost:8000/probation-regions-v0.csv
+
+to access the probation region reference data.
+
 ## Checking backwards compatibility
 
 To build, test, assemble the project:
