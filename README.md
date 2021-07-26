@@ -2,6 +2,8 @@
 
 [![Docker badge](https://img.shields.io/badge/docker-image-2496ED?style=flat&logo=docker)](https://github.com/ministryofjustice/hmpps-reference-data/pkgs/container/hmpps-reference-data)
 
+https://hmpps-reference-data.apps.live-1.cloud-platform.service.justice.gov.uk/
+
 🧑‍🔬 This is an experimental project: it may change.
 
 ## Intent
@@ -28,6 +30,7 @@ Then visit
 
 - http://localhost:8000/probation-regions-v0.json
 - http://localhost:8000/probation-regions-v0.csv
+- or on live: https://hmpps-reference-data.apps.live-1.cloud-platform.service.justice.gov.uk/probation-regions-v0.json
 
 to access the probation region reference data.
 
