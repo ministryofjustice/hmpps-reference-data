@@ -27,7 +27,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
   deploy:
-    if: ${{ github.ref == 'refs/head/main' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     needs: [publish_image]
 
     runs-on: ubuntu-latest
