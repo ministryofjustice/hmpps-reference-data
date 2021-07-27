@@ -8,11 +8,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Set application version
+        id: app_version
+        run: echo "::set-output name=prefix::$(date +'%Y-%m-%d').${{ github.run_number }}."
       - name: Generate docker image tags and labels
         id: meta
         uses: docker/metadata-action@v3
         with:
           images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=sha,priority=2000,format=short,prefix=${{ steps.app_version.outputs.prefix }},enable=${{ github.ref == 'refs/heads/main' }}
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+            type=ref,event=branch
       - name: Login to container registry
         uses: docker/login-action@v1
         with:
