@@ -18,13 +18,19 @@ Store reference data as flat files with the following characteristics:
     - cannot rename existing columns
     - can add new columns
 
+These guarantees are validated during [CI build](.github/workflows/build.yml).
+
 ## Where are the files?
 
 The reference data files are CSVs in the [`./registers/`](registers) directory.
 
-These are converted to JSON files during the [build process](.github/workflows/publish.yml) and published. For example:
+These are converted to JSON files during the [Docker build](Dockerfile) and [published](.github/workflows/publish.yml).
+
+To start the published service locally:
 ```
-docker run --rm -p 8000:8000 ghcr.io/ministryofjustice/hmpps-reference-data:main
+$ docker run --pull=always --rm -p 8000:8000 ghcr.io/ministryofjustice/hmpps-reference-data:main
+{snip}
+nginx 12:00:13.77 INFO  ==> ** Starting NGINX **
 ```
 Then visit
 
