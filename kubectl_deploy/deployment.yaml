@@ -4,6 +4,7 @@ metadata:
   name: app
   labels:
     app: app
+    app.kubernetes.io/version: appVersionPlaceholder
 spec:
   replicas: 1
   selector:
@@ -16,7 +17,7 @@ spec:
     spec:
       containers:
         - name: webservice
-          image: ghcr.io/ministryofjustice/hmpps-reference-data:main
+          image: ghcr.io/ministryofjustice/hmpps-reference-data:appVersionPlaceholder
           imagePullPolicy: Always
           ports:
             - containerPort: 8000

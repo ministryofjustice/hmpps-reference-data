@@ -5,6 +5,8 @@ on: [push]
 jobs:
   publish_image:
     runs-on: ubuntu-latest
+    outputs:
+      app_version: ${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -52,6 +54,8 @@ jobs:
           kubectl config use-context ${KUBE_CLUSTER}
       - name: Apply the updated manifest
         run: |
+          export APP_VERSION="${{ needs.publish_image.outputs.app_version }}"
+          sed -i "s/appVersionPlaceholder/${APP_VERSION}/g" kubectl_deploy/deployment.yaml
           kubectl --namespace=${{ secrets.KUBE_NAMESPACE }} apply \
             -f kubectl_deploy/deployment.yaml \
             -f kubectl_deploy/service.yaml \
