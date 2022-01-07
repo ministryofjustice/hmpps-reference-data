@@ -10,9 +10,8 @@ https://hmpps-reference-data.apps.live-1.cloud-platform.service.justice.gov.uk/
 
 Store reference data as flat files with the following characteristics:
 
-- each entry has a unique ID
-- the unique ID is in the _first_ column
-- entries are not deleted (instead, add a `start_date`/`end_date` column pair)
+- each entry has a single primary key ID in the _first_ column (:warning: uniqueness is not currently validated)
+- entries are not deleted (instead, end-date entries by adding a `start_date`/`end_date` column pair)
 - data structure changes are backwards-compatible in the same file:
     - cannot remove existing columns
     - cannot rename existing columns
