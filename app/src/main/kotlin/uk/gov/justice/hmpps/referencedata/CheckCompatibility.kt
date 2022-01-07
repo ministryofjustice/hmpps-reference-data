@@ -3,12 +3,12 @@ package uk.gov.justice.hmpps.referencedata
 import com.opencsv.CSVReader
 import java.io.StringReader
 
-data class Compatibility(val errors: List<String>)
+data class Problems(val errors: List<String>)
 
 class CheckCompatibility(private val releasedVersion: String, private val currentVersion: String?) {
-    fun check(): Compatibility {
+    fun check(): Problems {
         if (currentVersion == null) {
-            return Compatibility(listOf("no longer exists"))
+            return Problems(listOf("no longer exists"))
         }
 
         val vReleased = readAll(releasedVersion)
@@ -19,7 +19,7 @@ class CheckCompatibility(private val releasedVersion: String, private val curren
         val errors = mutableListOf<String>()
         errors.addAll(verifyHeaders(releasedHeaders, currentHeaders))
         errors.addAll(verifyContent(vReleased.map { it.first() }, vCurrent.map { it.first() }))
-        return Compatibility(errors)
+        return Problems(errors)
     }
 
     private fun verifyHeaders(requiredHeaders: List<String>, newHeaders: List<String>): List<String> {

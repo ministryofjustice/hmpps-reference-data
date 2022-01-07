@@ -60,7 +60,7 @@ class CheckCompatibilityTest {
         )
     }
 
-    private fun checkCompatibility(before: String, after: String): Compatibility =
+    private fun checkCompatibility(before: String, after: String): Problems =
         CheckCompatibility(fixture(before), fixture(after)).check()
 
     private fun fixture(filename: String): String = FileReader(javaClass.getResource(filename).file).readText()

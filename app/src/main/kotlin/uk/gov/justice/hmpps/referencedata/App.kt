@@ -2,9 +2,9 @@ package uk.gov.justice.hmpps.referencedata
 
 import kotlin.system.exitProcess
 
-data class Result(val register: Register, val compatibility: Compatibility) {
+data class Result(val register: Register, val problems: Problems) {
     fun hasErrors(): Boolean {
-        return compatibility.errors.isNotEmpty()
+        return problems.errors.isNotEmpty()
     }
 }
 
@@ -26,7 +26,7 @@ fun main(vararg args: String) {
 
 fun printResult(r: Result) {
     print("${r.register.path}:")
-    val errors = r.compatibility.errors
+    val errors = r.problems.errors
     if (errors.isEmpty()) {
         println(" ✅ pass")
     } else {
