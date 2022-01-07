@@ -18,6 +18,8 @@ Store reference data as flat files with the following characteristics:
     - cannot rename existing columns
     - can add new columns
 
+The rules are in [`CheckCompatibility.kt`](app/src/main/kotlin/uk/gov/justice/hmpps/referencedata/CheckCompatibility.kt).
+
 These guarantees are validated during [CI build](.github/workflows/build.yml).
 
 ## Where are the files?
