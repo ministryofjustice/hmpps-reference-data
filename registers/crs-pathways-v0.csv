@@ -1,9 +1,9 @@
-crs_pathway_id,crs_pathway_name
-229ca1e5-8fa6-44c8-9730-09082c385286,"Accommodation"
-489f49ba-5eb8-4762-aba1-cb29ddd2a0f7,"Dependency and Recovery"
-e79de494-05b6-49c6-aff5-152057473144,"Education, Training and Employment"
-b88e0dfd-19d8-4a13-909d-d36c4704c9d8,"Emotional Wellbeing"
-7c95b37a-0e12-4363-9662-fe1eaccbb8c1,"Family and Significant Others"
-4b61cc15-9280-4d67-9bd7-f74d4674e4ce,"Finance, Benefits and Debt"
-ee342fdd-e3d2-4ace-b078-4d7ce8bd2c90,"Lifestyle and Associates"
-54bf09db-cc00-4721-b95a-16e3282b4d4b,"Social Inclusion"
+crs_pathway_id,crs_pathway_name,crs_pathway_acronym
+229ca1e5-8fa6-44c8-9730-09082c385286,"Accommodation",
+489f49ba-5eb8-4762-aba1-cb29ddd2a0f7,"Dependency and Recovery",DNR
+e79de494-05b6-49c6-aff5-152057473144,"Education, Training and Employment",ETE
+b88e0dfd-19d8-4a13-909d-d36c4704c9d8,"Emotional Wellbeing",
+7c95b37a-0e12-4363-9662-fe1eaccbb8c1,"Family and Significant Others",
+4b61cc15-9280-4d67-9bd7-f74d4674e4ce,"Finance, Benefits and Debt",FBD
+ee342fdd-e3d2-4ace-b078-4d7ce8bd2c90,"Lifestyle and Associates",
+54bf09db-cc00-4721-b95a-16e3282b4d4b,"Social Inclusion",
